@@ -1,7 +1,7 @@
 
 ### PROJECT STRUCTURE
 ```
-bitoin_rbf-assesment/
+rbf_assesment/
 ├── Cargo.toml
 ├── .env.example
 ├── .gitignore
