@@ -199,8 +199,6 @@ Run the full test suite to verify that your domain rules, use case mocks, and Po
 # Run all tests (unit and integration)
 cargo test -- --nocapture
 
-# Run integration tests specifically
-cargo test --test integration_test -- --nocapture
 ```
 
 A passing test suite guarantees that both the mock architecture and live node connections are in a healthy state.
@@ -249,10 +247,27 @@ Wallet Balance: 0 BTC
 cargo run -- new-address
 ```
 
+Example output:
+
+```
+Generated Address [bech32]: bcrt1qhqraagleyq38mf94wuqdyvnkp88q8rsngkzau0
+
+```
+
 ### 5. Fetch Blockchain Summary
 
 ```bash
 cargo run -- blockchain-info
+```
+
+Example output:
+```
+=== BITCOIN BLOCKCHAIN INFO ===
+Chain:                   regtest
+Blocks:                  2
+Headers:                 2
+Difficulty:              0.00000000046565423739069247
+Verification Progress:   14.72%
 ```
 
 ### 6. Execute Raw RPC Method
