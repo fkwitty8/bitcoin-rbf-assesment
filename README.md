@@ -159,14 +159,14 @@ Polar allows you to spin up local Bitcoin Core and Lightning nodes in seconds.
 - (Optional) Create a default wallet inside your node using `bitcoin-cli`:
 
 ```bash
-bitcoin-cli -regtest createwallet "default"
+bitcoin-cli -regtest createwallet "my_wallet"
 ```
 
 Expected Response:
 
 ```json
 {
-  "name": "default"
+  "name": "my_wallet"
 }
 ```
 
@@ -189,6 +189,7 @@ Retrieve node credentials from Polar:
 BITCOIN_RPC_URL=http://127.0.0.1:18443
 BITCOIN_RPC_USER=polaruser
 BITCOIN_RPC_PASSWORD=polarpass
+BTC_WALLET_NAME=my_wallet
 ```
 
 ## 🧪 Testing
