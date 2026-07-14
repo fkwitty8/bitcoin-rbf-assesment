@@ -8,98 +8,98 @@ btc-cli/
 ├── README.md
 │
 └── src/
-    ├── main.rs                     # Entry point (initializes logger, config, container & dispatches CLI)
-    │
-    ├── core/                       # ⚙️ CROSS-CUTTING / SYSTEM CORE
-    │   ├── mod.rs                  # Core module exports
-    │   ├── container.rs            # Dependency Injection (DI) Composition Root
-    │   ├── exceptions.rs                # AppError enum (combines Domain, RPC, Config & Infra errors)
-    │   └── logger.rs               # Tracing-subscriber / logging initialization
-    │
-    ├── domain/                     # 1. DOMAIN LAYER (Enterprise / Core Business Rules)
-    │   ├── mod.rs                  # Domain module exports
-    │   │
-    │   ├── entities/               # Complex domain objects with identity
-    │   │   ├── mod.rs
-    │   │   ├── blockchain.rs       # ChainState entity (Chain, Blocks, Headers)
-    │   │   └── wallet.rs           # Wallet entity (Name, TxCount)
-    │   │
-    │   ├── value_objects/          # Immutable domain value objects
-    │   │   ├── mod.rs
-    │   │   ├── address.rs          # Bitcoin Address VO (validates string format)
-    │   │   ├── balance.rs          # Satoshi / BTC Balance VO (prevents negative values)
-    │   │   └── difficulty.rs       # Chain difficulty VO
-    │   │
-    │   ├── enums/                  # Pure Domain Enums
-    │   │   ├── mod.rs
-    │   │   └── address_type_enums.rs     # AddressType (Bech32, Legacy, P2shSegwit, Bech32m)
-    │   │
-    │   ├── ports/                  # Outbound Interfaces / Traits (Dependency Inversion)
-    │   │   ├── mod.rs
-    │   │   ├── blockchain_port.rs  # Trait for fetching blockchain state
-    │   │   ├── wallet_port.rs      # Trait for wallet operations (balance, address, info)
-    │   │   └── raw_rpc_port.rs     # Trait for executing generic JSON-RPC methods
-    │   │
-    │   └── exceptions.rs               # DomainError enum (pure business failure cases)
-    │
-    ├── application/                # 2. APPLICATION LAYER (Use Cases / Orchestration)
-    │   ├── mod.rs                  # Application module exports
-    │   │
-    │   ├── dtos/                   # Application Data Transfer Objects (Input/Output commands)
-    │   │   ├── mod.rs
-    │   │   ├── blockchain_dto.rs   # Output DTO for blockchain summary
-    │   │   └── wallet_dto.rs       # Output DTO for wallet summary
-    │   │
-    │   └── use_cases/              # Independent application use cases
-    │       ├── mod.rs
-    │       ├── wallet_usecase # wallet usecases
-            |   ├── mod.rs
-            |   ├── get_wallet_info_usecase.rs     # Retrieves target wallet information
-            |   ├── get_wallet_balance_usecase.rs         # Obtains current wallet balance
-            |   ├── generate_wallet_address_usecase.rs    # Generates a new Bitcoin address
-            | 
-            ├── blockchain_usecase     # block chain usecase
-            |   ├── mod.rs
-            |   ├── get_blockchain_info.rs # Fetches & transforms chain state
-            |
-            ├── bexecute_raw_rpc_usecase.rs
-     
-    │
-    ├── infrastructure/             # 3. INFRASTRUCTURE LAYER (External Adapters & Drivers)
-    │   ├── mod.rs                  # Infrastructure module exports
-    │   ├── config.rs               # Environment & CLI flag configuration parser
-    │   │
-    │   └── bitcoin_rpc/            # JSON-RPC Integration for Bitcoin Core
-    │       ├── mod.rs
-    │       ├── client.rs           # Reqwest HTTP engine (handles Basic Auth & HTTP POSTs)
-    │       │
-    │       ├── dto/                # Infrastructure Serde DTOs (Matches raw RPC response JSON)
-    │       │   ├── mod.rs
-    │       │   ├── rpc_request.rs  # JSON-RPC 1.0 request structure
-    │       │   └── rpc_response.rs # Serde structs for Bitcoin Core JSON outputs
-    │       │
-    │       └── adapters/           # Concrete implementations of Domain Ports
-    │           ├── mod.rs
-    │           ├── blockchain_adapter.rs # Implements BlockchainPort using client.rs
-    │           ├── wallet_adapter.rs     # Implements WalletPort using client.rs
-    │           └── raw_rpc_adapter.rs    # Implements RawRpcPort using client.rs
-    │
-    └── presentation/               # 4. PRESENTATION LAYER (CLI Delivery Mechanism)
-        ├── mod.rs                  # Presentation module exports
-        ├── cli.rs                  # Clap command, argument & subcommand definitions
-        ├── formatters.rs           # Terminal output styling, table formatting & colors
-        │
-        └── handlers/               # Dispatches parsed CLI args to Container Use Cases
-            ├── mod.rs
-            ├── blockchain_handler.rs # Invokes GetBlockchainInfoUseCase
-            ├── wallet_handler.rs     # Invokes GetWalletInfo, GetBalance, GenerateAddress UCs
-            └── rpc_handler.rs        # Invokes ExecuteRawRpcUseCase
-
+|   ├── main.rs                     # Entry point (initializes logger, config, container & dispatches CLI)
+|   │
+|   ├── core/                       # ⚙️ CROSS-CUTTING / SYSTEM CORE
+|   │   ├── mod.rs                  # Core module exports
+|   │   ├── container.rs            # Dependency Injection (DI) Composition Root
+|   │   ├── exceptions.rs                # AppError enum (combines Domain, RPC, Config & Infra errors)
+|   │   └── logger.rs               # Tracing-subscriber / logging initialization
+|   │
+|   ├── domain/                     # 1. DOMAIN LAYER (Enterprise / Core Business Rules)
+|   │   ├── mod.rs                  # Domain module exports
+|   │   │
+|   │   ├── entities/               # Complex domain objects with identity
+|   │   │   ├── mod.rs
+|   │   │   ├── blockchain.rs       # ChainState entity (Chain, Blocks, Headers)
+|   │   │   └── wallet.rs           # Wallet entity (Name, TxCount)
+|   │   │
+|   │   ├── value_objects/          # Immutable domain value objects
+|   │   │   ├── mod.rs
+|   │   │   ├── address.rs          # Bitcoin Address VO (validates string format)
+|   │   │   ├── balance.rs          # Satoshi / BTC Balance VO (prevents negative values)
+|   │   │   └── difficulty.rs       # Chain difficulty VO
+|   │   │
+|   │   ├── enums/                  # Pure Domain Enums
+|   │   │   ├── mod.rs
+|   │   │   └── address_type_enums.rs     # AddressType (Bech32, Legacy, P2shSegwit, Bech32m)
+|   │   │
+|   │   ├── ports/                  # Outbound Interfaces / Traits (Dependency Inversion)
+|   │   │   ├── mod.rs
+|   │   │   ├── blockchain_port.rs  # Trait for fetching blockchain state
+|   │   │   ├── wallet_port.rs      # Trait for wallet operations (balance, address, info)
+|   │   │   └── raw_rpc_port.rs     # Trait for executing generic JSON-RPC methods
+|   │   │
+|   │   └── exceptions.rs               # DomainError enum (pure business failure cases)
+|   │
+|   ├── application/                # 2. APPLICATION LAYER (Use Cases / Orchestration)
+|   │   ├── mod.rs                  # Application module exports
+|   │   │
+|   │   ├── dtos/                   # Application Data Transfer Objects (Input/Output commands)
+|   │   │   ├── mod.rs
+|   │   │   ├── blockchain_dto.rs   # Output DTO for blockchain summary
+|   │   │   └── wallet_dto.rs       # Output DTO for wallet summary
+|   │   │
+|   │   └── use_cases/              # Independent application use cases
+|   │       ├── mod.rs
+|   │       ├── wallet_usecase # wallet usecases
+|   |       |   ├── mod.rs
+|   |       |   ├── get_wallet_info_usecase.rs     # Retrieves target wallet information
+|   |       |   ├── get_wallet_balance_usecase.rs         # Obtains current wallet balance
+|   |       |   ├── generate_wallet_address_usecase.rs    # Generates a new Bitcoin address
+|   |       | 
+|   |       ├── blockchain_usecase     # block chain usecase
+|   |       |   ├── mod.rs
+|   |       |   ├── get_blockchain_info.rs # Fetches & transforms chain state
+|   |       |
+|   |       ├── bexecute_raw_rpc_usecase.rs
+|   |  
+|   │
+|   ├── infrastructure/             # 3. INFRASTRUCTURE LAYER (External Adapters & Drivers)
+|   │   ├── mod.rs                  # Infrastructure module exports
+|   │   ├── config.rs               # Environment & CLI flag configuration parser
+|   │   │
+|   │   └── bitcoin_rpc/            # JSON-RPC Integration for Bitcoin Core
+|   │       ├── mod.rs
+|   │       ├── client.rs           # Reqwest HTTP engine (handles Basic Auth & HTTP POSTs)
+|   │       │
+|   │       ├── dto/                # Infrastructure Serde DTOs (Matches raw RPC response JSON)
+|   │       │   ├── mod.rs
+|   │       │   ├── rpc_request.rs  # JSON-RPC 1.0 request structure
+|   │       │   └── rpc_response.rs # Serde structs for Bitcoin Core JSON outputs
+|   │       │
+|   │       └── adapters/           # Concrete implementations of Domain Ports
+|   │           ├── mod.rs
+|   │           ├── blockchain_adapter.rs # Implements BlockchainPort using client.rs
+|   │           ├── wallet_adapter.rs     # Implements WalletPort using client.rs
+|   │           └── raw_rpc_adapter.rs    # Implements RawRpcPort using client.rs
+|   │
+|   └── presentation/               # 4. PRESENTATION LAYER (CLI Delivery Mechanism)
+|       ├── mod.rs                  # Presentation module exports
+|       ├── cli.rs                  # Clap command, argument & subcommand definitions
+|       ├── formatters.rs           # Terminal output styling, table formatting & colors
+|       │
+|       └── handlers/               # Dispatches parsed CLI args to Container Use Cases
+|           ├── mod.rs
+|           ├── blockchain_handler.rs # Invokes GetBlockchainInfoUseCase
+|           ├── wallet_handler.rs     # Invokes GetWalletInfo, GetBalance, GenerateAddress UCs
+|           └── rpc_handler.rs        # Invokes ExecuteRawRpcUseCase
 |
 |
 |
 |
-└── tests/                           # COMPLETE MIRROR TEST DIRECTORY
+|
+└── tests/                           # TEST DIRECTORY
     ├── common/
     │   └── mod.rs                   # Shared test helpers (e.g., node setup, test container)
     │
