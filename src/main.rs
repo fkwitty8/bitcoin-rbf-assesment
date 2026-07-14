@@ -8,19 +8,19 @@ use dotenvy::dotenv;
 
 #[tokio::main]
 async fn main() -> Result<(), AppError> {
-    // 1. Load environment variables from .env if present
+    // Load environment variables from .env if present
     let _ = dotenv();
 
-    // 2. Initialize application logger
+    // Initialize application logger
     logger::init_logger();
 
-    // 3. Parse CLI arguments
+    // Parse CLI arguments
     let cli = Cli::parse();
 
-    // 4. Initialize Dependency Injection Container
+    // Initialize Dependency Injection Container
     let container = AppContainer::new(&cli.config);
 
-    // 5. Dispatch subcommands
+    // Dispatch subcommands
     match &cli.command {
         Commands::BlockchainInfo => {
             blockchain_handler::handle_blockchain_info(&container).await?;

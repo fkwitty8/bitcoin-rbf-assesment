@@ -26,7 +26,7 @@ impl WalletPort for BitcoinRpcWalletAdapter {
    async fn get_wallet_info(&self) -> Result<Wallet, DomainError> {
     let raw: RawWalletInfo = self.client.call("getwalletinfo", vec![]).await?;
 
-    // Option B: Construct default zero balances for the domain Wallet entity
+    // Construct default zero balances for the domain Wallet entity
     let balance = Balance::new(0.0)?;
     let unconfirmed = Balance::new(0.0)?;
 
