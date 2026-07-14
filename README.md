@@ -1,7 +1,7 @@
 
 ### PROJECT STRUCTURE
 ```
-btc-cli/
+bitoin_rbf-assesment/
 ├── Cargo.toml
 ├── .env.example
 ├── .gitignore
