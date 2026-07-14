@@ -10,7 +10,7 @@ rbf_assesment/
 └── src/
 |   ├── main.rs                     # Entry point (initializes logger, config, container & dispatches CLI)
 |   │
-|   ├── core/                       # ⚙️ CROSS-CUTTING / SYSTEM CORE
+|   ├── core/                       # CROSS-CUTTING / SYSTEM CORE
 |   │   ├── mod.rs                  # Core module exports
 |   │   ├── container.rs            # Dependency Injection (DI) Composition Root
 |   │   ├── exceptions.rs                # AppError enum (combines Domain, RPC, Config & Infra errors)
