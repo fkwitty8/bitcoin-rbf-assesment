@@ -1,4 +1,4 @@
-use crate::core::exceptions::AppError;
+use crate::domain::exceptions::DomainError;
 use crate::domain::ports::raw_rpc_ports::RawRpcPort;
 use serde_json::Value;
 use std::sync::Arc;
@@ -12,7 +12,7 @@ impl ExecuteRawRpcUseCase {
         Self { raw_rpc_port }
     }
 
-    pub async fn execute(&self, method: &str, params: Vec<Value>) -> Result<Value, AppError> {
+    pub async fn execute(&self, method: &str, params: Vec<Value>) -> Result<Value, DomainError> {
         self.raw_rpc_port.execute(method, params).await
     }
 }

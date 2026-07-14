@@ -8,6 +8,7 @@ edition = "2021"
 clap = { version = "4.4", features = ["derive", "env"] }
 dotenvy = "0.15"
 
+
 # Async & Networking
 tokio = { version = "1.35", features = ["full"] }
 reqwest = { version = "0.11", features = ["json"] }
@@ -22,3 +23,8 @@ thiserror = "1.0"
 colored = "2.1"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+
+
+[dev-dependencies]
+mockall = "0.13"

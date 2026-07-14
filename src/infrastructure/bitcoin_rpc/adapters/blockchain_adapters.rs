@@ -1,4 +1,4 @@
-use crate::core::exceptions::AppError;
+use crate::domain::exceptions::DomainError;
 use crate::domain::entities::blockchain::ChainState;
 use crate::domain::ports::blockchain_ports::BlockchainPort;
 use crate::infrastructure::bitcoin_rpc::client::BitcoinRpcClient;
@@ -18,7 +18,8 @@ impl BitcoinRpcBlockchainAdapter {
 
 #[async_trait]
 impl BlockchainPort for BitcoinRpcBlockchainAdapter {
-    async fn get_chain_state(&self) -> Result<ChainState, AppError> {
+    async fn get_chain_state(&self) -> Result<ChainState, DomainError> {
+        
         let raw: RawBlockchainInfo = self.client.call("getblockchaininfo", vec![]).await?;
 
         Ok(ChainState::new(
