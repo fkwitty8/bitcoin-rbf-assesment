@@ -5,6 +5,8 @@ rbf_assesment/
 ├── Cargo.toml
 ├── .env.example
 ├── .gitignore
+├── .cargo
+|    └── config.toml # it contains the the configurations disabling all the packages thta throw "futur error compatibilities 
 ├── README.md
 │
 └── src/
