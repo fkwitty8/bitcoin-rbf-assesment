@@ -4,9 +4,9 @@ use clap::{Parser, Subcommand};
 #[derive(Parser, Debug)]
 #[command(
     name = "btc-cli",
-    author,
-    version,
-    about = "Clean Architecture Bitcoin Core JSON-RPC CLI"
+    author = "@fkwitty8",
+    version = "v.0.0.1",
+    about = "Bitcoin Core JSON-RPC CLI "
 )]
 pub struct Cli {
     #[command(flatten)]
