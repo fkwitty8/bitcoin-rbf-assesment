@@ -5,15 +5,19 @@ use clap::{Parser, Subcommand};
 #[command(
     name = "btc-cli",
     author = "@fkwitty8",
-    version = "v.0.0.1",
+    version = "v.0.0.1 by @fkwitty8",
     about = "Bitcoin Core JSON-RPC CLI "
 )]
 pub struct Cli {
+    /// Print the author information
+    #[arg(short = 'a', long)]
+    pub author: bool,
+
     #[command(flatten)]
     pub config: Config,
 
     #[command(subcommand)]
-    pub command: Commands,
+    pub command:Commands,
 }
 
 #[derive(Subcommand, Debug)]
