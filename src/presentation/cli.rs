@@ -22,6 +22,7 @@ pub struct Cli {
 
 #[derive(Subcommand, Debug)]
 pub enum Commands {
+    Author,
     /// Fetch blockchain status and metrics
     BlockchainInfo,
 

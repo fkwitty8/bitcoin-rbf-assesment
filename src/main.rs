@@ -2,7 +2,7 @@ use rfb_assesment::core::container::AppContainer;
 use rfb_assesment::core::exceptions::AppError;
 use rfb_assesment::core::logger;
 use rfb_assesment::presentation::cli::{Cli, Commands};
-use rfb_assesment::presentation::handlers::{blockchain_handler, raw_rpc_handler, wallet_handler};
+use rfb_assesment::presentation::handlers::{blockchain_handler, raw_rpc_handler, wallet_handler,util_handler};
 use clap::Parser;
 use dotenvy::dotenv;
 
@@ -36,6 +36,9 @@ async fn main() -> Result<(), AppError> {
         }
         Commands::Rpc { method, params } => {
             raw_rpc_handler::handle_raw_rpc(&container, method, params).await?;
+        }
+        Commands::Author => {
+            util_handler::handle_author().await?;
         }
     }
 

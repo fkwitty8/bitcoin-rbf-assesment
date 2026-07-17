@@ -28,6 +28,7 @@ pub fn print_balance(balance_btc: f64) {
     println!("{}: {} BTC", "Wallet Balance".bold().cyan(), balance_btc.to_string().bold().green());
 }
 
+
 pub fn print_address(address: &str, address_type: &str) {
     println!(
         "{} [{}]: {}",
@@ -43,3 +44,10 @@ pub fn print_raw_rpc(value: &Value) {
         Err(_) => println!("{:?}", value),
     }
 }
+
+pub fn print_author(author: &str) {
+    println!("{}: {}", "Author".bold().magenta(), author.bold().white());
+}
+
+
+
