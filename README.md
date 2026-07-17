@@ -154,6 +154,7 @@ cargo --version
 Polar allows you to spin up local Bitcoin Core and Lightning nodes in seconds.
 
 - Download and launch [Polar](https://lightningpolar.com/).
+-  * **Note:** dockerdesktop must be installed and running on your machine. Dont have docker yet? get it here, [Docker](https://www.docker.com/products/docker-desktop/) 
 - Create a new Bitcoin Regtest network with at least one Bitcoin Core node (e.g., `backend1`).
 - Start the network.
 - (Optional) Create a default wallet inside your node using `bitcoin-cli`:
@@ -192,7 +193,7 @@ BITCOIN_RPC_PASSWORD=polarpass
 BTC_WALLET_NAME=my_wallet
 ```
 
-## 🧪 Testing
+## ⌖ Testing
 
 Run the full test suite to verify that your domain rules, use case mocks, and Polar integrations are functional:
 
@@ -204,7 +205,7 @@ cargo test -- --nocapture
 
 A passing test suite guarantees that both the mock architecture and live node connections are in a healthy state.
 
-## 💻 Usage & CLI Commands
+## 🤖 Usage & CLI Commands
 
 Run the application using `cargo run -- <COMMAND>`.
 
