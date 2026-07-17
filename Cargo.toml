@@ -23,6 +23,7 @@ thiserror = "1.0"
 colored = "2.1"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tabled = { version = "0.21.0", features = ["ansi"] }
 
 
 

@@ -1,12 +1,24 @@
 use crate::infrastructure::config::Config;
-use clap::{Parser, Subcommand};
+use clap::{Parser, Subcommand, ColorChoice, builder::styling};
+
+// 1. Define your custom premium color palette here
+pub fn get_styles() -> styling::Styles {
+    styling::Styles::styled()
+        .header(styling::AnsiColor::Green.on_default().bold())
+        .usage(styling::AnsiColor::Green.on_default().bold())
+        .literal(styling::AnsiColor::Cyan.on_default().bold())
+        .placeholder(styling::AnsiColor::BrightBlack.on_default())
+}
 
 #[derive(Parser, Debug)]
 #[command(
     name = "btc-cli",
     author = "@fkwitty8",
     version = "v.0.0.1 by @fkwitty8",
-    about = "Bitcoin Core JSON-RPC CLI "
+    about = "Bitcoin Core JSON-RPC CLI ",
+    styles = get_styles(),
+    color = ColorChoice::Always,
+    help_template = "\n{before-help}{about} {version}\n\n{usage-heading}\n  {usage}\n\n{all-args}{after-help}"
 )]
 pub struct Cli {
     /// Print the author information

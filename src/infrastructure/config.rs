@@ -1,5 +1,6 @@
 use clap::Args;
 
+
 #[derive(Args, Debug, Clone)]
 pub struct Config {
     #[arg(
@@ -9,10 +10,22 @@ pub struct Config {
     )]
     pub rpc_url: String,
 
-    #[arg(long, env = "BTC_RPC_USER", default_value = "polaruser")]
+    #[arg(
+        long, 
+        env = "BTC_RPC_USER", 
+        default_value = "polaruser",
+        hide_env_values = true,     // Protects active terminal env value
+        hide_default_value = true   // Masks fallback default from screen
+    )]
     pub rpc_user: String,
 
-    #[arg(long, env = "BTC_RPC_PASS", default_value = "polarpass")]
+    #[arg(
+        long, 
+        env = "BTC_RPC_PASS", 
+        default_value = "polarpass",
+        hide_env_values = true,     // Protects active terminal env value
+        hide_default_value = true   // Masks fallback default from screen
+    )]
     pub rpc_pass: String,
 
     #[arg(long, env = "BTC_WALLET_NAME")]

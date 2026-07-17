@@ -1,0 +1,7 @@
+[target.'cfg(all())']
+rustflags = ["--cap-lints=allow"]
+
+[future-incompat-report]
+frequency = "never"
+
+#### always run : cargo report future-incompatibilities to check for dependencies with future compatibility issues
