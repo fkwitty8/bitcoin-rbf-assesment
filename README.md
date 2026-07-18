@@ -217,9 +217,10 @@ cargo run -- auhtor
 ```
 Example ouput:
 ```
-╭──────────────────┬───────────╮
-│ Core Contributor │ @fkwitty8 │
-├──────────────────┼───────────┤
+=== SYSTEM AUTHOR ===
+╭──────────────────┬─────────────────────────────────────────────╮
+│ Core Contributor │ @fkwitty8, mubarak23@thebuidl-rfb_assesment │
+├──────────────────┼─────────────────────────────────────────────┤
 ```
 
 ### 1. View Help

@@ -2,6 +2,7 @@
 name = "rfb_assesment"
 version = "0.1.0"
 edition = "2021"
+authors = ["@fkwitty8","mubarak23@thebuidl-rfb_assesment"]
 
 [dependencies]
 # CLI & Configuration

@@ -13,8 +13,8 @@ pub fn get_styles() -> styling::Styles {
 #[derive(Parser, Debug)]
 #[command(
     name = "btc-cli",
-    author = "@fkwitty8",
-    version = "v.0.0.1 by @fkwitty8",
+    author,
+    version,
     about = "Bitcoin Core JSON-RPC CLI ",
     styles = get_styles(),
     color = ColorChoice::Always,
